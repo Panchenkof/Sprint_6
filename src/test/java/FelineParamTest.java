@@ -21,16 +21,9 @@ public class FelineParamTest {
     };
   }
 
-  @Test
-  public void getKittensParamTest() {
-    Feline feline = new Feline();
-    switch (kittensCount) {
-      case 2:
-        assertEquals(2, feline.getKittens(kittensCount));
-        break;
-      case 3:
-        assertEquals(3, feline.getKittens(kittensCount));
-        break;
-    }
-  }
+@Test
+public void getKittensParamTest() {
+  Feline feline = new Feline();
+  assertEquals(kittensCount, feline.getKittens(kittensCount));
+}
 }
