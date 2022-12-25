@@ -16,24 +16,9 @@ import java.util.Objects;
 import static org.junit.Assert.*;
 
 
-@RunWith(Parameterized.class)
+
 public class LionTest {
-
-  private final String sex;
-
-
-  public LionTest(String sex) {
-    this.sex = sex;
-
-  }
-
-  @Parameterized.Parameters
-  public static Object[][] getEatData() {
-    return new Object[][] {
-            {"Самец"},
-            {"Самка"},
-    };
-  }
+  String sex = "Самец";
 
   @Before
   public void init() {
@@ -43,26 +28,13 @@ public class LionTest {
   @Mock
   Feline feline;
 
+
   @Test
   public void getKittensTest() throws Exception {
     var lion = new Lion(sex, feline);
     Mockito.when(lion.getKittens()).thenReturn(1);
     assertEquals(1, lion.getKittens());
   }
-
-  @Test
-  public void doesHaveManeTest() throws Exception {
-    var lion = new Lion(sex, feline);
-    switch (sex){
-      case "Самец":
-        assertTrue(lion.doesHaveMane());
-        break;
-      case "Самка":
-        assertFalse(lion.doesHaveMane());
-        break;
-    }
-  }
-
 
   @Test
   public void getFoodTest() throws Exception {
