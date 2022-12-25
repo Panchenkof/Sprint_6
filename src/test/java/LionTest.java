@@ -28,7 +28,6 @@ public class LionTest {
   @Mock
   Feline feline;
 
-
   @Test
   public void getKittensTest() throws Exception {
     var lion = new Lion(sex, feline);
@@ -39,8 +38,8 @@ public class LionTest {
   @Test
   public void getFoodTest() throws Exception {
     var lion = new Lion(sex, feline);
-    Mockito.when(lion.getFood()).thenReturn(List.of("Хищник"));
-    assertEquals(List.of("Хищник"), lion.getFood());
+    Mockito.when(lion.getFood()).thenReturn(List.of("df"));
+    assertEquals(List.of("df"), lion.getFood());
   }
 
 }
