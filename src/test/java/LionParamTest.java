@@ -10,33 +10,27 @@ import static org.junit.Assert.*;
 @RunWith(Parameterized.class)
 public class LionParamTest {
 
-  private final String sex;
+  String sex;
   Feline feline;
+  boolean shouldHaveMane;
 
-  public LionParamTest(String sex) {
+  public LionParamTest(String sex, boolean shouldHaveMane) {
     this.sex = sex;
-
+    this.shouldHaveMane = shouldHaveMane;
   }
 
   @Parameterized.Parameters
   public static Object[][] getEatData() {
     return new Object[][] {
-            {"Самец"},
-            {"Самка"},
+            {"Самец", true},
+            {"Самка", false},
     };
   }
 
   @Test
   public void doesHaveManeTest() throws Exception {
     var lion = new Lion(sex, feline);
-    switch (sex){
-      case "Самец":
-        assertTrue(lion.doesHaveMane());
-        break;
-      case "Самка":
-        assertFalse(lion.doesHaveMane());
-        break;
-    }
+    assertEquals(shouldHaveMane, lion.doesHaveMane());
   }
 
 
